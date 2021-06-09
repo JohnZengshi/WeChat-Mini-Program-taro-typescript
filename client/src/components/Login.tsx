@@ -1,15 +1,17 @@
 /*
  * @Author: your name
  * @Date: 2021-06-09 22:44:20
- * @LastEditTime: 2021-06-09 23:49:33
+ * @LastEditTime: 2021-06-10 00:35:24
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/components/Login.tsx
  */
 
-import { Button, Text, View } from "@tarojs/components";
+import { View } from "@fower/taro";
+import { Text } from "@tarojs/components";
 import Taro, { General } from "@tarojs/taro";
 import { useState } from "react";
+import { AtButton } from "taro-ui";
 
 export default function Login() {
   const [context, setContext] = useState<
@@ -26,12 +28,13 @@ export default function Login() {
       });
   };
   return (
-    <View className="index">
-      <Button onClick={getLogin}>获取登录云函数</Button>
-      <Text>
-        context：
-        {JSON.stringify(context)}
-      </Text>
+    <View pl24 pr24 pt12 overflow className="index">
+      <View mb12>
+        <AtButton type="primary" circle onClick={getLogin}>
+          获取登录云函数
+        </AtButton>
+      </View>
+      <Text>{typeof context == "object" && JSON.stringify(context)}</Text>
     </View>
   );
 }
