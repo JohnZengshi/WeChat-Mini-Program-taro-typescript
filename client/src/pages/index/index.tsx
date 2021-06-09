@@ -6,30 +6,29 @@
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/pages/index/index.tsx
  */
-import { Component } from 'react'
-import Taro from '@tarojs/taro'
-import { View } from '@tarojs/components'
-import './index.scss'
+import { Component } from "react";
+import Taro from "@tarojs/taro";
+import { View } from "@tarojs/components";
+import "./index.scss";
 
-import Login from '@/components/Login'
+import Login from "@/components/Login";
 
 export default class Index extends Component {
+  componentWillMount() {}
 
-  componentWillMount () { }
+  componentDidMount() {}
 
-  componentDidMount () { }
+  componentWillUnmount() {}
 
-  componentWillUnmount () { }
+  componentDidShow() {}
 
-  componentDidShow () { }
+  componentDidHide() {}
 
-  componentDidHide () { }
-
-  render () {
+  render() {
     return (
-      <View className='index'>
-        <Login/>
+      <View className="index">
+        <Login />
       </View>
-    )
+    );
   }
 }
