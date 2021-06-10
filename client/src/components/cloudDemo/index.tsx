@@ -12,7 +12,7 @@ import { Text } from "@tarojs/components";
 import Taro, { General } from "@tarojs/taro";
 import { useState } from "react";
 import { AtButton, AtTextarea } from "taro-ui";
-import IconFont from "./iconfont";
+import IconFont from "../iconfont";
 
 export default function Login() {
   const [context, setContext] = useState<

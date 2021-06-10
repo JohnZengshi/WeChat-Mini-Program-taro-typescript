@@ -1,17 +1,18 @@
 /*
  * @Author: your name
  * @Date: 2021-06-09 22:13:36
- * @LastEditTime: 2021-06-10 00:22:50
+ * @LastEditTime: 2021-06-10 16:45:01
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/pages/index/index.tsx
  */
 import { Component } from "react";
-import Taro from "@tarojs/taro";
+import Taro, { navigateTo, switchTab } from "@tarojs/taro";
 import "./index.scss";
-
-import Login from "@/components/Login";
 import { View } from "@fower/taro";
+import { AtButton } from "taro-ui";
+import { PageListName } from "@/app.config";
+import AppNavBar from "@/components/AppNavBar";
 
 export default class Index extends Component {
   componentWillMount() {}
@@ -26,9 +27,18 @@ export default class Index extends Component {
 
   render() {
     return (
-      <View className="index">
-        <Login />
-      </View>
+      <>
+        <AppNavBar />
+        <View p10 pl12 pr12 className="index">
+          <AtButton
+            type="primary"
+            circle
+            onClick={() => switchTab({ url: `/${PageListName.Mine}` })}
+          >
+            Mine
+          </AtButton>
+        </View>
+      </>
     );
   }
 }
