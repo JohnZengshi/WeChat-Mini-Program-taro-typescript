@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-09 22:13:36
- * @LastEditTime: 2021-06-10 16:45:01
+ * @LastEditTime: 2021-06-10 18:39:40
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/pages/index/index.tsx
@@ -13,32 +13,25 @@ import { View } from "@fower/taro";
 import { AtButton } from "taro-ui";
 import { PageListName } from "@/app.config";
 import AppNavBar from "@/components/AppNavBar";
+import { useDispatch } from "@/store";
 
-export default class Index extends Component {
-  componentWillMount() {}
-
-  componentDidMount() {}
-
-  componentWillUnmount() {}
-
-  componentDidShow() {}
-
-  componentDidHide() {}
-
-  render() {
-    return (
-      <>
-        <AppNavBar />
-        <View p10 pl12 pr12 className="index">
-          <AtButton
-            type="primary"
-            circle
-            onClick={() => switchTab({ url: `/${PageListName.Mine}` })}
-          >
-            Mine
-          </AtButton>
-        </View>
-      </>
-    );
-  }
+export default function Index() {
+  const dispatch = useDispatch();
+  return (
+    <>
+      <AppNavBar />
+      <View p10 pl12 pr12 className="index">
+        <AtButton
+          type="primary"
+          circle
+          onClick={() => {
+            switchTab({ url: `/${PageListName.Mine}` });
+            dispatch({ type: "add todo", todo: "ni hao" });
+          }}
+        >
+          Mine
+        </AtButton>
+      </View>
+    </>
+  );
 }
