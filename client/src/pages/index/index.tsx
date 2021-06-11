@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-09 22:13:36
- * @LastEditTime: 2021-06-10 18:39:40
+ * @LastEditTime: 2021-06-10 23:50:44
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/pages/index/index.tsx
@@ -14,6 +14,7 @@ import { AtButton } from "taro-ui";
 import { PageListName } from "@/app.config";
 import AppNavBar from "@/components/AppNavBar";
 import { useDispatch } from "@/store";
+import CloudDemo from "@/components/CloudDemo";
 
 export default function Index() {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ export default function Index() {
         >
           Mine
         </AtButton>
+        <CloudDemo />
       </View>
     </>
   );

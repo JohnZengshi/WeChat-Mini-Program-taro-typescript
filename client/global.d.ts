@@ -1,3 +1,12 @@
+/*
+ * @Author: your name
+ * @Date: 2021-06-10 18:33:03
+ * @LastEditTime: 2021-06-11 00:43:10
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /taro-typescript/client/global.d.ts
+ */
+
 declare module "*.png";
 declare module "*.gif";
 declare module "*.jpg";
@@ -12,7 +21,16 @@ declare module "*.styl";
 // @ts-ignore
 declare const process: {
   env: {
-    TARO_ENV: 'weapp' | 'swan' | 'alipay' | 'h5' | 'rn' | 'tt' | 'quickapp' | 'qq' | 'jd';
+    TARO_ENV:
+      | "weapp"
+      | "swan"
+      | "alipay"
+      | "h5"
+      | "rn"
+      | "tt"
+      | "quickapp"
+      | "qq"
+      | "jd";
     [key: string]: any;
-  }
-}
+  };
+};

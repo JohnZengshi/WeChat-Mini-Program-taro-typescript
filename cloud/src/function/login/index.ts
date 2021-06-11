@@ -1,20 +1,20 @@
 /*
  * @Author: your name
  * @Date: 2021-06-09 22:13:36
- * @LastEditTime: 2021-06-09 23:37:41
- * @LastEditors: your name
+ * @LastEditTime: 2021-06-11 00:01:25
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/cloud/functions/login/index.js
  */
 // 云函数模板
 // 部署：在 cloud-functions/login 文件夹右击选择 “上传并部署”
 
-const cloud = require("wx-server-sdk");
+import cloud from "wx-server-sdk";
 
 // 初始化 cloud
 cloud.init({
   // API 调用都保持和云函数当前所在环境一致
-  env: cloud.DYNAMIC_CURRENT_ENV,
+  env: cloud.DYNAMIC_CURRENT_ENV as unknown as string,
 });
 
 /**
@@ -23,9 +23,8 @@ cloud.init({
  * event 参数包含小程序端调用传入的 data
  *
  */
-exports.main = async (event, context) => {
+exports.main = async (event: any) => {
   console.log(event);
-  console.log(context);
 
   // 可执行其他自定义逻辑
   // console.log 的内容可以在云开发云函数调用日志查看

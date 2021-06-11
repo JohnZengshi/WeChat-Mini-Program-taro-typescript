@@ -1,6 +1,6 @@
 {
   "miniprogramRoot": "client/dist/",
-  "cloudfunctionRoot": "cloud/functions/",
+  "cloudfunctionRoot": "cloud/dist/function/",
   "projectname": "taro-typescript",
   "description": "",
   "appid": "wxd73aee9b5bb33d5d",
@@ -40,5 +40,6 @@
     "minifyWXSS": true
   },
   "compileType": "miniprogram",
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
   "condition": {}
 }

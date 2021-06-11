@@ -1,0 +1,22 @@
+{
+  "verbose": false,
+  "debug": false,
+  "exec": "tsc && node ./script/build.js",
+  "ignore": [
+    "mochawesome-report",
+    "node_modules",
+    "./test",
+    "**/*.d.ts",
+    "*.test.ts",
+    "*.spec.ts",
+    "fixtures/*",
+    "test/**/*",
+    "docs/*"
+  ],
+  "events": {
+    "restart": ""
+  },
+  "watch": ["./src"],
+  "ext": "ts tsx",
+  "inspect": true
+}

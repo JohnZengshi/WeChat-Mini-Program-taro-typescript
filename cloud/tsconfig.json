@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./dist",
+    "outDir": "dist",
+    "sourceMap": false,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictPropertyInitialization": false,
+    "module": "commonjs",
+    "target": "es2017",
+    "rootDir": "src",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "noUnusedLocals": true
+  },
+  "include": ["src/**/*.ts"]
+}
