@@ -6,7 +6,7 @@ import { AtButtonProps } from "taro-ui/types/button";
 /*
  * @Author: your name
  * @Date: 2021-06-11 13:58:57
- * @LastEditTime: 2021-06-11 14:27:10
+ * @LastEditTime: 2021-06-11 14:33:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/components/CommonBtn.tsx

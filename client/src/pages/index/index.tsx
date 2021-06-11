@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-09 22:13:36
- * @LastEditTime: 2021-06-11 14:26:30
+ * @LastEditTime: 2021-06-11 14:33:40
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/pages/index/index.tsx
@@ -23,6 +23,7 @@ export default function Index() {
       <AppNavBar />
       <View p10 pl12 pr12 className="index">
         <CommonBtn
+          customStyle={{ display: "inline-block" }}
           text="Mine"
           onClick={() => {
             switchTab({ url: `/${PageListName.Mine}` });
