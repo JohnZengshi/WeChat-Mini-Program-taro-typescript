@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-10 21:15:37
- * @LastEditTime: 2021-06-11 18:51:14
+ * @LastEditTime: 2021-06-11 21:08:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/cloud/src/function/user/index.ts

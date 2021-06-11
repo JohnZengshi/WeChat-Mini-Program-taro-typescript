@@ -7,27 +7,24 @@ import { useEffect } from "react";
 /*
  * @Author: your name
  * @Date: 2021-06-10 10:08:53
- * @LastEditTime: 2021-06-10 18:41:47
+ * @LastEditTime: 2021-06-11 21:01:34
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/pages/mine/index.tsx
  */
 export default function Mine() {
-  const { lastUpdated, todos } = useMappedState((state) => state);
-  useEffect(() => {
-    console.log("todos", todos);
-    return () => {};
-  }, [todos]);
+  const { user } = useMappedState((state) => state);
+
   return (
     <View
       css={{
         display: "flex",
-        flexDirection: "row",
+        flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
       }}
     >
-      <Text>Mine:{lastUpdated}</Text>
+      <Text>Mine:{user?.OPENID}</Text>
     </View>
   );
 }

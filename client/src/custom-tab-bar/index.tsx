@@ -1,13 +1,16 @@
 /*
  * @Author: your name
  * @Date: 2021-06-10 12:42:21
- * @LastEditTime: 2021-06-10 15:59:08
+ * @LastEditTime: 2021-06-11 21:10:09
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/custom-tab-bar/index.tsx
  */
 import { CoverImage, CoverView } from "@fower/taro";
-import Taro, { getCurrentPages, switchTab } from "@tarojs/taro";
+import Taro, {
+  getCurrentPages,
+  switchTab,
+} from "@tarojs/taro";
 import { useEffect, useState } from "react";
 import { PageList } from "../app.config";
 
@@ -37,6 +40,7 @@ export default function Tabbar() {
         alignItems: "center",
         justifyContent: "space-between",
         paddingBottom: "env(safe-area-inset-bottom)",
+        backgroundColor: "white",
       }}
     >
       {PageList.map((v, i) => (
@@ -58,7 +62,9 @@ export default function Tabbar() {
               w12
               h12
               src={
-                currentPage == v.pagePath ? v.selectedIconPath! : v.iconPath!
+                currentPage == v.pagePath
+                  ? v.selectedIconPath!
+                  : v.iconPath!
               }
             ></CoverImage>
           </CoverView>

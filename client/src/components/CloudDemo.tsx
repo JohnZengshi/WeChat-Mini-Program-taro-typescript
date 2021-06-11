@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-09 22:44:20
- * @LastEditTime: 2021-06-11 18:22:31
+ * @LastEditTime: 2021-06-11 21:09:12
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/components/Login.tsx
@@ -10,7 +10,7 @@
 import { CloudFunctionName } from "@/constants/cloudFunction";
 import APIrequest from "@/service";
 import { useDispatch, useMappedState } from "@/store";
-import { Button, View } from "@fower/taro";
+import { Button, Text, View } from "@fower/taro";
 import Taro from "@tarojs/taro";
 import { useEffect, useMemo, useState } from "react";
 import {
@@ -26,29 +26,14 @@ import useAPI from "../service/index";
 export default function CloudDemo() {
   const [showDelModal, setShowDelModal] = useState(false);
   const [delId, setDelId] = useState("");
+
+  const { request, login } = useAPI();
+  const { user, todos } = useMappedState((state) => state);
   const dispatch = useDispatch();
-  const { request } = useAPI();
-  const { user } = useMappedState((state) => state);
   useEffect(() => {
-    console.log("user", user);
     return () => {};
   }, [user]);
-  const getLogin = () => {
-    request<
-      CloudFunction.User.Action,
-      any,
-      ReturnType<
-        CloudFunction.User.Login<ICloud.BaseWXContext>
-      >
-    >(CloudFunctionName.User, {
-      action: "login",
-    }).then((res) => {
-      dispatch({
-        type: "update user data",
-        user: res.data || null,
-      });
-    });
-  };
+
   const getTodos = () => {
     request<
       CloudFunction.Todos.Action,
@@ -72,7 +57,12 @@ export default function CloudDemo() {
         due: new Date(),
         tags: ["123"],
       },
-    }).then((res) => console.log(res));
+    }).then((res) => {
+      dispatch({
+        type: "add todo",
+        todo: res.data?.description!,
+      });
+    });
   };
   const delTodos = async (id: string) => {
     request<
@@ -94,7 +84,7 @@ export default function CloudDemo() {
         <CommonBtn
           customStyle={{ display: "inline-block" }}
           text="获取用户信息"
-          onClick={getLogin}
+          onClick={login}
           iconSlot={
             <IconFont
               size={60}
@@ -117,6 +107,17 @@ export default function CloudDemo() {
             />
           }
         />
+        <View
+          mt12
+          style={{
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          {todos.map((v) => (
+            <Text>{v}</Text>
+          ))}
+        </View>
       </View>
       <View mb12>
         <CommonBtn
