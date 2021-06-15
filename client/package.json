@@ -55,6 +55,7 @@
     "@types/react": "^17.0.2",
     "@types/webpack-env": "^1.13.6",
     "babel-preset-taro": "3.2.10",
+    "http-status-codes": "^2.1.4",
     "prettier": "2.3.1",
     "stylelint": "9.3.0",
     "taro-iconfont-cli": "^3.2.1",

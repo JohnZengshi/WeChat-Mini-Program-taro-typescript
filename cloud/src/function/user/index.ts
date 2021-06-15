@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-09 22:13:36
- * @LastEditTime: 2021-06-11 17:27:12
+ * @LastEditTime: 2021-06-15 11:24:33
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/cloud/functions/login/index.js
@@ -10,6 +10,7 @@
 // 部署：在 cloud-functions/login 文件夹右击选择 “上传并部署”
 
 import cloud from "wx-server-sdk";
+import statusCode from "http-status-codes";
 
 // 初始化 cloud
 cloud.init({
@@ -34,6 +35,7 @@ exports.main = async (
     const wxContext = cloud.getWXContext();
 
     return {
+      code: statusCode.OK,
       data: wxContext,
       msg: "登录成功",
     };

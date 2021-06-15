@@ -1,12 +1,13 @@
 /*
  * @Author: your name
  * @Date: 2021-06-10 21:15:37
- * @LastEditTime: 2021-06-11 21:08:32
+ * @LastEditTime: 2021-06-15 11:03:04
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/cloud/src/function/user/index.ts
  */
 import cloud from "wx-server-sdk";
+import statusCode from "http-status-codes";
 const env = cloud.DYNAMIC_CURRENT_ENV as unknown as string;
 // 初始化 cloud
 cloud.init({ env });
@@ -16,7 +17,7 @@ const todos = db.collection("todos");
 const MAX_LIMIT = 100;
 exports.main = async (
   event: CloudFunction.BaseReq<CloudFunction.Todos.Action>
-) => {
+): Promise<CloudFunction.BaseRes> => {
   const getList: CloudFunction.Todos.GetList = async (params) => {
     // 先取出集合记录总数
     const countResult = await todos.count();
@@ -37,7 +38,7 @@ exports.main = async (
       tasks.push(promise as Promise<cloud.DB.IQueryResult>);
     }
 
-    if (tasks.length == 0) return { data: [], msg: "ok" };
+    if (tasks.length == 0) return { code: statusCode.OK, data: [], msg: "ok" };
     // 等待所有
     const result = (await Promise.all(tasks)).reduce((acc, cur) => {
       return {
@@ -46,6 +47,7 @@ exports.main = async (
       };
     });
     return {
+      code: statusCode.OK,
       data: result.data as any,
       msg: "ok",
     };
@@ -53,6 +55,7 @@ exports.main = async (
   const add: CloudFunction.Todos.Add = async (params) => {
     await todos.add({ data: params });
     return {
+      code: statusCode.OK,
       data: params,
       msg: "ok",
     };
@@ -60,10 +63,12 @@ exports.main = async (
   const del: CloudFunction.Todos.Del = async (params) => {
     await todos.doc(params._id).remove();
     return {
+      code: statusCode.OK,
       msg: "ok",
     };
   };
-  if (!event.params._openid) return { msg: "openId不能为空！" };
+  if (!event.params._openid)
+    return { code: statusCode.BAD_REQUEST, msg: "openId不能为空！" };
   switch (event.action) {
     case "getList":
       return getList(event.params);
@@ -72,6 +77,9 @@ exports.main = async (
     case "del":
       return del(event.params);
     default:
-      break;
+      return {
+        code: statusCode.BAD_REQUEST,
+        msg: "方法未定义",
+      };
   }
 };

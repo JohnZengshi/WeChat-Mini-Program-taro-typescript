@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-10 12:42:21
- * @LastEditTime: 2021-06-11 21:10:09
+ * @LastEditTime: 2021-06-15 15:04:20
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/custom-tab-bar/index.tsx
@@ -15,9 +15,11 @@ import { useEffect, useState } from "react";
 import { PageList } from "../app.config";
 
 export default function Tabbar() {
-  const [currentPage, setCurrentPage] = useState("");
+  const [currentPage, setCurrentPage] = useState(
+    PageList[0].pagePath
+  );
   useEffect(() => {
-    updateTabar();
+    // updateTabar();
     wx.onAppRoute(function () {
       updateTabar();
     });
@@ -26,7 +28,7 @@ export default function Tabbar() {
 
   const updateTabar = () => {
     const page = getCurrentPages();
-    // console.log(page);
+    // console.log(page[page.length - 1]?.route);
     setCurrentPage(page[page.length - 1]?.route);
   };
 

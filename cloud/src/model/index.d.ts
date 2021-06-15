@@ -1,18 +1,18 @@
 /*
  * @Author: your name
  * @Date: 2021-06-11 00:17:48
- * @LastEditTime: 2021-06-11 21:08:45
+ * @LastEditTime: 2021-06-15 10:59:29
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/cloud/src/model/index.ts
  */
-
 declare module CloudFunction {
   class BaseReq<A, P = any> {
     action: A;
     params?: P;
   }
   type BaseRes<D = any> = {
+    code: number;
     data?: D;
     msg: string;
   };
