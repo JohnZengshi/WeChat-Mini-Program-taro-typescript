@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-10 18:35:09
- * @LastEditTime: 2021-06-11 21:05:43
+ * @LastEditTime: 2021-06-15 15:33:52
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/store/index.tsx
@@ -12,14 +12,18 @@ import { create } from "redux-react-hook";
 
 export interface IState {
   lastUpdated: number;
-  todos: string[];
+  todos: Partial<CloudFunction.Todos.listItem>[];
   user: ICloud.BaseWXContext | null;
 }
 
 export type Action =
   | {
       type: "add todo";
-      todo: string;
+      todo: IState["todos"];
+    }
+  | {
+      type: "update todo";
+      todos: IState["todos"];
     }
   | {
       type: "delete todo";
@@ -36,12 +40,7 @@ export function makeStore(): Store<IState, Action> {
 
 export const INITIAL_STATE: IState = {
   lastUpdated: 0,
-  todos: [
-    "Make the fire!",
-    "Fix the breakfast!",
-    "Wash the dishes!",
-    "Do the mopping!",
-  ],
+  todos: [],
   user: null,
 };
 

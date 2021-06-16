@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-10 21:15:37
- * @LastEditTime: 2021-06-15 11:03:04
+ * @LastEditTime: 2021-06-16 11:49:00
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/cloud/src/function/user/index.ts
@@ -61,7 +61,7 @@ exports.main = async (
     };
   };
   const del: CloudFunction.Todos.Del = async (params) => {
-    await todos.doc(params._id).remove();
+    await todos.where({ _id: params._id }).remove();
     return {
       code: statusCode.OK,
       msg: "ok",

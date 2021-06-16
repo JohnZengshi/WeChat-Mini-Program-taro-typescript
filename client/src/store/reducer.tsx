@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-10 18:35:25
- * @LastEditTime: 2021-06-11 21:02:28
+ * @LastEditTime: 2021-06-16 11:56:11
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/store/reducer.tsx
@@ -20,7 +20,13 @@ export default function reducer(
         todos: state.todos.concat(action.todo),
       };
     }
-
+    case "update todo": {
+      return {
+        ...state,
+        lastUpdated: Date.now(),
+        todos: action.todos,
+      };
+    }
     case "delete todo": {
       const todos = state.todos.slice();
       todos.splice(action.index, 1);

@@ -1,16 +1,15 @@
 /*
  * @Author: your name
  * @Date: 2021-06-09 22:44:20
- * @LastEditTime: 2021-06-11 21:09:12
+ * @LastEditTime: 2021-06-16 11:57:51
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/components/Login.tsx
  */
 
 import { CloudFunctionName } from "@/constants/cloudFunction";
-import APIrequest from "@/service";
 import { useDispatch, useMappedState } from "@/store";
-import { Button, Text, View } from "@fower/taro";
+import { Button, View } from "@fower/taro";
 import Taro from "@tarojs/taro";
 import { useEffect, useMemo, useState } from "react";
 import {
@@ -18,30 +17,43 @@ import {
   AtModal,
   AtModalAction,
   AtModalContent,
+  AtSwipeAction,
 } from "taro-ui";
 import CommonBtn from "./CommonBtn";
 import IconFont from "./iconfont";
 import useAPI from "../service/index";
-
+import useModel from "./CommonModel";
 export default function CloudDemo() {
   const [showDelModal, setShowDelModal] = useState(false);
   const [delId, setDelId] = useState("");
-
   const { request, login } = useAPI();
   const { user, todos } = useMappedState((state) => state);
   const dispatch = useDispatch();
+  const { comfire, close, Model } = useModel();
+  useEffect(() => {
+    return () => {};
+  }, []);
   useEffect(() => {
     return () => {};
   }, [user]);
 
   const getTodos = () => {
-    request<
-      CloudFunction.Todos.Action,
-      Parameters<CloudFunction.Todos.GetList>,
-      ReturnType<CloudFunction.Todos.GetList>
-    >(CloudFunctionName.Todos, {
-      action: "getList",
-    }).then((res) => console.log(res));
+    return new Promise<void>((reslove) => {
+      request<
+        CloudFunction.Todos.Action,
+        Parameters<CloudFunction.Todos.GetList>,
+        ReturnType<CloudFunction.Todos.GetList>
+      >(CloudFunctionName.Todos, {
+        action: "getList",
+      }).then((res) => {
+        console.log(res);
+        dispatch({
+          type: "update todo",
+          todos: res.data || [],
+        });
+        reslove();
+      });
+    });
   };
   const addTodos = () => {
     request<
@@ -51,7 +63,6 @@ export default function CloudDemo() {
     >(CloudFunctionName.Todos, {
       action: "add",
       params: {
-        _openid: "",
         description: "哈哈哈",
         done: false,
         due: new Date(),
@@ -60,22 +71,26 @@ export default function CloudDemo() {
     }).then((res) => {
       dispatch({
         type: "add todo",
-        todo: res.data?.description!,
+        todo: [res.data!],
       });
     });
   };
-  const delTodos = async (id: string) => {
-    request<
-      CloudFunction.Todos.Action,
-      Parameters<CloudFunction.Todos.Del>[0],
-      ReturnType<CloudFunction.Todos.Del>
-    >(CloudFunctionName.Todos, {
-      action: "del",
-      params: {
-        _openid: "",
-        _id: id,
-      },
-    }).then((res) => console.log(res));
+  const delTodos = (id: string) => {
+    return new Promise<void>((reslove) => {
+      request<
+        CloudFunction.Todos.Action,
+        Parameters<CloudFunction.Todos.Del>[0],
+        ReturnType<CloudFunction.Todos.Del>
+      >(CloudFunctionName.Todos, {
+        action: "del",
+        params: {
+          _id: id,
+        },
+      }).then((res) => {
+        console.log(res);
+        reslove();
+      });
+    });
   };
 
   return (
@@ -107,18 +122,47 @@ export default function CloudDemo() {
             />
           }
         />
-        <View
-          mt12
-          style={{
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          {todos.map((v) => (
-            <Text>{v}</Text>
+      </View>
+      {todos.length > 0 && (
+        <View mb12>
+          {todos.map((v, i) => (
+            <AtSwipeAction
+              maxDistance={100}
+              areaWidth={250}
+              key={v._id}
+              options={[{ text: "删除" }]}
+              onClick={(item, index, event) => {
+                if (index == 0) {
+                  comfire({
+                    title: "删除todos",
+                    content: "确定删除todo吗？",
+                  })
+                    .then(async (event) => {
+                      console.log("确定删除", i);
+                      await delTodos(todos[i]._id!);
+                      await getTodos();
+                      close();
+                    })
+                    .catch((event) => {
+                      console.log("取消删除", event);
+                    });
+                }
+              }}
+            >
+              <View
+                style={{
+                  height: 50,
+                  lineHeight: "100rpx",
+                  borderBottomWidth: 5,
+                  borderColor: "gray",
+                }}
+              >
+                {v.description}
+              </View>
+            </AtSwipeAction>
           ))}
         </View>
-      </View>
+      )}
       <View mb12>
         <CommonBtn
           customStyle={{ display: "inline-block" }}
@@ -179,6 +223,7 @@ export default function CloudDemo() {
         ),
         [showDelModal, delId]
       )}
+      {Model}
     </View>
   );
 }

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-11 14:36:25
- * @LastEditTime: 2021-06-15 14:26:11
+ * @LastEditTime: 2021-06-16 11:34:38
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/service/index.ts
@@ -11,12 +11,7 @@ import { useDispatch, useMappedState } from "@/store";
 import { cloud, General, showToast } from "@tarojs/taro";
 import { CloudFunctionName } from "../constants/cloudFunction";
 import statusCode from "http-status-codes";
-import {
-  useCallback,
-  useEffect,
-  useRef,
-  useMemo,
-} from "react";
+import { useEffect, useRef } from "react";
 
 export default function useAPI() {
   const { user } = useMappedState((state) => state);
@@ -32,10 +27,9 @@ export default function useAPI() {
     R = Promise<General.IAnyObject | string | undefined>
   >(
     funcName: CloudFunctionName,
-    data?: CloudFunction.BaseReq<A, D & { _openid: string }>
+    data?: CloudFunction.BaseReq<A, D>
   ) {
     return new Promise((reslove) => {
-      console.log(funcName, user);
       cloud
         .callFunction({
           name: funcName,
@@ -45,7 +39,10 @@ export default function useAPI() {
               ...data?.params,
               _openid: user?.OPENID,
             },
-          } as typeof data,
+          } as CloudFunction.BaseReq<
+            A,
+            D & { _openid: string }
+          >,
         })
         .then((res) => {
           const result =

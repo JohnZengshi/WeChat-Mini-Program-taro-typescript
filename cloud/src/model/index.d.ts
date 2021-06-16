@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-11 00:17:48
- * @LastEditTime: 2021-06-15 10:59:29
+ * @LastEditTime: 2021-06-16 11:36:44
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/cloud/src/model/index.ts
@@ -31,11 +31,9 @@ declare module CloudFunction {
       params: Pick<listItem, "_openid">
     ) => Promise<BaseRes<listItem[]>>;
     export type Add = (
-      params: Omit<listItem, "_id">
-    ) => Promise<BaseRes<Omit<listItem, "_id">>>;
-    export type Del = (
-      params: Pick<listItem, "_id" | "_openid">
-    ) => Promise<BaseRes>;
+      params: Omit<listItem, "_id" | "_openid">
+    ) => Promise<BaseRes<Omit<listItem, "_id" | "_openid">>>;
+    export type Del = (params: Pick<listItem, "_id">) => Promise<BaseRes>;
   }
   declare module User {
     type Action = "login";

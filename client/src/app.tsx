@@ -1,12 +1,12 @@
 /*
  * @Author: your name
  * @Date: 2021-06-09 22:13:36
- * @LastEditTime: 2021-06-15 14:42:47
+ * @LastEditTime: 2021-06-16 11:57:34
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/app.ts
  */
-import { ReactNode, useEffect } from "react";
+import { ReactNode } from "react";
 import Taro from "@tarojs/taro";
 
 import "./app.scss";
