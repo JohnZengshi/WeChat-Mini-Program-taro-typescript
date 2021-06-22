@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-09 22:13:36
- * @LastEditTime: 2021-06-10 15:53:02
+ * @LastEditTime: 2021-06-22 14:13:29
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/config/index.js
@@ -11,12 +11,12 @@ const vantComponentsList = [];
 const config = {
   projectName: "taro-typescript",
   date: "2021-6-9",
-  designWidth: 750,
-  deviceRatio: {
-    640: 2.34 / 2,
-    750: 1,
-    828: 1.81 / 2,
-  },
+  // designWidth: 750,
+  // deviceRatio: {
+  //   640: 2.34 / 2,
+  //   750: 1,
+  //   828: 1.81 / 2,
+  // },
   sourceRoot: "src",
   outputRoot: "dist",
   plugins: [],
@@ -53,8 +53,14 @@ const config = {
       },
       ...vantComponentsList.map((v) => {
         return {
-          from: "src/components/vant-weapp/dist/" + v + "/index.wxs",
-          to: "dist/components/vant-weapp/dist/" + v + "/index.wxs",
+          from:
+            "src/components/vant-weapp/dist/" +
+            v +
+            "/index.wxs",
+          to:
+            "dist/components/vant-weapp/dist/" +
+            v +
+            "/index.wxs",
         };
       }),
     ],
@@ -79,7 +85,8 @@ const config = {
         enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
         config: {
           namingPattern: "module", // 转换模式，取值为 global/module
-          generateScopedName: "[name]__[local]___[hash:base64:5]",
+          generateScopedName:
+            "[name]__[local]___[hash:base64:5]",
         },
       },
     },
@@ -96,14 +103,18 @@ const config = {
         enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
         config: {
           namingPattern: "module", // 转换模式，取值为 global/module
-          generateScopedName: "[name]__[local]___[hash:base64:5]",
+          generateScopedName:
+            "[name]__[local]___[hash:base64:5]",
         },
       },
     },
   },
   alias: {
     "@": path.resolve(__dirname, "..", "src/"),
-    "~/vant": path.resolve(__dirname, "../src/components/vant-weapp/dist"),
+    "~/vant": path.resolve(
+      __dirname,
+      "../src/components/vant-weapp/dist"
+    ),
   },
 };
 

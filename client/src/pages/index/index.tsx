@@ -1,12 +1,18 @@
 import { PageListName } from "@/app.config";
 import useAPI from "@/service";
-import Taro, { cloud, switchTab } from "@tarojs/taro";
+import Taro, {
+  cloud,
+  navigateTo,
+  redirectTo,
+  switchTab,
+} from "@tarojs/taro";
 import { useEffect } from "react";
+import { getNavUrl } from "../../utils/index";
 
 /*
  * @Author: your name
  * @Date: 2021-06-15 14:43:33
- * @LastEditTime: 2021-06-15 14:49:02
+ * @LastEditTime: 2021-06-22 18:23:20
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/pages/index/index.tsx
@@ -18,7 +24,10 @@ export default function Index() {
       cloud.init();
     }
     login().then(() =>
-      switchTab({ url: `/${PageListName.Home}` })
+      // switchTab({ url: getNavUrl(PageListName.Home) })
+      redirectTo({
+        url: getNavUrl(PageListName.SignInAndSignUp),
+      })
     );
     return () => {};
   }, []);

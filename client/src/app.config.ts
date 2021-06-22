@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-09 22:13:36
- * @LastEditTime: 2021-06-15 14:46:04
+ * @LastEditTime: 2021-06-22 17:57:21
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/app.config.ts
@@ -11,9 +11,12 @@ import { useGlobalIconFont } from "./components/iconfont/helper";
 import { IconNames } from "./components/iconfont/index";
 
 export enum PageListName {
-  Index = "pages/index/index",
-  Home = "pages/home/index",
-  Mine = "pages/mine/index",
+  Index = "pages/Index/index",
+  Home = "pages/Home/index",
+  Mine = "pages/Mine/index",
+  SignUp = "pages/SignUp/index",
+  SignIn = "pages/SignIn/index",
+  SignInAndSignUp = "pages/SignInAndSignUp/index",
 }
 export const PageList: (Taro.TarbarList & {
   iconName?: IconNames;
@@ -39,6 +42,9 @@ export const config: Config = {
     PageListName.Index,
     PageListName.Home,
     PageListName.Mine,
+    PageListName.SignUp,
+    PageListName.SignIn,
+    PageListName.SignInAndSignUp,
   ],
   window: {
     backgroundTextStyle: "light",

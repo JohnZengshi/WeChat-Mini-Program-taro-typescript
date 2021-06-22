@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-10 12:42:21
- * @LastEditTime: 2021-06-15 15:04:20
+ * @LastEditTime: 2021-06-22 11:09:41
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/custom-tab-bar/index.tsx
@@ -12,7 +12,8 @@ import Taro, {
   switchTab,
 } from "@tarojs/taro";
 import { useEffect, useState } from "react";
-import { PageList } from "../app.config";
+import { PageList, PageListName } from "../app.config";
+import { getNavUrl } from "../utils/index";
 
 export default function Tabbar() {
   const [currentPage, setCurrentPage] = useState(
@@ -56,7 +57,9 @@ export default function Tabbar() {
             justifyContent: "center",
           }}
           onClick={() => {
-            switchTab({ url: `/${v.pagePath}` });
+            switchTab({
+              url: getNavUrl(v.pagePath as PageListName),
+            });
           }}
         >
           <CoverView w12 mb5>

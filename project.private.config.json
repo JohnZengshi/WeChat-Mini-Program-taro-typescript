@@ -1,0 +1,36 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "SignInAndSignUp",
+          "pathName": "pages/SignInAndSignUp/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "SignUp",
+          "pathName": "pages/SignUp/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "SignIn",
+          "pathName": "pages/SignIn/index",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

@@ -5,7 +5,7 @@ import React, { FunctionComponent } from 'react';
 import Taro from '@tarojs/taro';
 import Icon from './h5';
 
-export type IconNames = 'adduser' | 'deleteuser' | 'user' | 'file-add' | 'delete' | 'right' | 'arrowright' | 'unorderedlist' | 'orderedlist' | 'file-add-fill' | 'delete-fill' | 'switchuser' | 'appstoreadd' | 'rotate-right';
+export type IconNames = 'eye-fill' | 'eyeclose-fill' | 'check' | 'arrowleft' | 'adduser' | 'deleteuser' | 'user' | 'file-add' | 'delete' | 'right' | 'arrowright' | 'unorderedlist' | 'orderedlist' | 'file-add-fill' | 'delete-fill' | 'switchuser' | 'appstoreadd' | 'rotate-right';
 
 interface Props {
   name: IconNames;
@@ -17,7 +17,7 @@ interface Props {
 const IconFont: FunctionComponent<Props> = (props) => {
   const { name, size, color, style } = props;
 
-  return <Icon name={name} size={parseFloat(Taro.pxTransform(size, 750))} color={color} style={style} />;
+  return <Icon name={name} size={parseFloat(Taro.pxTransform(size, 424))} color={color} style={style} />;
 };
 
 IconFont.defaultProps = {

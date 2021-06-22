@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-09 22:13:36
- * @LastEditTime: 2021-06-16 10:51:20
+ * @LastEditTime: 2021-06-22 11:10:11
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/pages/index/index.tsx
@@ -19,6 +19,7 @@ import { useEffect, useMemo } from "react";
 import CloudDemo from "@/components/CloudDemo";
 import { CloudFunctionName } from "@/constants/cloudFunction";
 import useModel from "@/components/CommonModel";
+import { getNavUrl } from "../../utils/index";
 
 export default function Home() {
   const { request } = useAPI();
@@ -52,7 +53,9 @@ export default function Home() {
           customStyle={{ display: "inline-block" }}
           text="Mine"
           onClick={() => {
-            switchTab({ url: `/${PageListName.Mine}` });
+            switchTab({
+              url: getNavUrl(PageListName.Mine),
+            });
           }}
           iconSlot={
             <IconFont

@@ -2,6 +2,10 @@
 /* eslint-disable */
 
 import React, { CSSProperties, DOMAttributes, FunctionComponent } from 'react';
+import IconEyeFill from './IconEyeFill';
+import IconEyecloseFill from './IconEyecloseFill';
+import IconCheck from './IconCheck';
+import IconArrowleft from './IconArrowleft';
 import IconAdduser from './IconAdduser';
 import IconDeleteuser from './IconDeleteuser';
 import IconUser from './IconUser';
@@ -17,7 +21,7 @@ import IconSwitchuser from './IconSwitchuser';
 import IconAppstoreadd from './IconAppstoreadd';
 import IconRotateRight from './IconRotateRight';
 
-export type IconNames = 'adduser' | 'deleteuser' | 'user' | 'file-add' | 'delete' | 'right' | 'arrowright' | 'unorderedlist' | 'orderedlist' | 'file-add-fill' | 'delete-fill' | 'switchuser' | 'appstoreadd' | 'rotate-right';
+export type IconNames = 'eye-fill' | 'eyeclose-fill' | 'check' | 'arrowleft' | 'adduser' | 'deleteuser' | 'user' | 'file-add' | 'delete' | 'right' | 'arrowright' | 'unorderedlist' | 'orderedlist' | 'file-add-fill' | 'delete-fill' | 'switchuser' | 'appstoreadd' | 'rotate-right';
 
 interface Props extends DOMAttributes<SVGElement> {
   name: IconNames;
@@ -29,6 +33,14 @@ interface Props extends DOMAttributes<SVGElement> {
 
 const IconFont: FunctionComponent<Props> = ({ name, ...rest }) => {
   switch (name) {
+    case 'eye-fill':
+      return <IconEyeFill {...rest} />;
+    case 'eyeclose-fill':
+      return <IconEyecloseFill {...rest} />;
+    case 'check':
+      return <IconCheck {...rest} />;
+    case 'arrowleft':
+      return <IconArrowleft {...rest} />;
     case 'adduser':
       return <IconAdduser {...rest} />;
     case 'deleteuser':
