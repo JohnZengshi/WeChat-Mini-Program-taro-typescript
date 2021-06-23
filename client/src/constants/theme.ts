@@ -4,7 +4,7 @@ import { CSSProperties } from "react";
 /*
  * @Author: your name
  * @Date: 2021-06-22 14:39:39
- * @LastEditTime: 2021-06-22 17:48:29
+ * @LastEditTime: 2021-06-22 22:21:54
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/constants/theme.ts
@@ -30,6 +30,7 @@ export const ThemeStyle: {
     width: "100%",
     height: toRpx(63),
     backgroundColor: Theme.baseColor,
+    borderColor: Theme.baseColor,
     borderRadius: 100,
     lineHeight: toRpx(63),
     fontSize: toRpx(14),

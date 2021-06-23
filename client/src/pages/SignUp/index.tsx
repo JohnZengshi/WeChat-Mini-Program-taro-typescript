@@ -1,17 +1,12 @@
 /*
  * @Author: your name
  * @Date: 2021-06-22 14:47:06
- * @LastEditTime: 2021-06-22 17:50:21
+ * @LastEditTime: 2021-06-22 22:13:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/pages/CreateAccount/index.tsx
  */
-import {
-  Checkbox,
-  Image,
-  Text,
-  View,
-} from "@tarojs/components";
+import { Image, Text, View } from "@tarojs/components";
 import Taro from "@tarojs/taro";
 import { Theme, ThemeStyle } from "../../constants/theme";
 import Group6800 from "../../assets/images/Group6800.png";
@@ -21,6 +16,7 @@ import CommonBtn from "@/components/CommonBtn";
 import IconFont from "@/components/iconfont";
 import CommonInput from "@/components/CommonInput";
 import { useState } from "react";
+import CommonCheckBox from "../../components/CheckBox/commom";
 export default function SignUp() {
   const [seePassword, setSeePassword] = useState(false);
   return (
@@ -108,7 +104,7 @@ export default function SignUp() {
               Privace Policy
             </Text>
           </Text>
-          <Checkbox value="" color={Theme.baseColor} />
+          <CommonCheckBox />
         </View>
         <CommonBtn
           text="GET STARTED"

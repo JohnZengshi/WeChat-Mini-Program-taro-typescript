@@ -12,7 +12,7 @@ import { toRpx } from "../utils/index";
 /*
  * @Author: your name
  * @Date: 2021-06-10 16:43:03
- * @LastEditTime: 2021-06-22 17:40:11
+ * @LastEditTime: 2021-06-22 21:58:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/components/appNavBar/index.tsx
@@ -23,11 +23,18 @@ interface Props {
 export default function AppNavBar(props: Props) {
   const [statusBarHeight, setStatusBarHeight] = useState(0);
   const [navHeight, setNavHeight] = useState(0);
+  const [padding, setPadding] = useState(0);
+  const [menuButtonHeight, setMenuButtonHeight] =
+    useState(0);
   useEffect(() => {
     getSystemInfo().then((res) => {
       setStatusBarHeight(res.statusBarHeight);
       const menuButtonBoundingClient =
         getMenuButtonBoundingClientRect();
+      setPadding(
+        res.windowWidth - menuButtonBoundingClient.right
+      );
+      setMenuButtonHeight(menuButtonBoundingClient.height);
       const navHeight =
         (menuButtonBoundingClient.top -
           res.statusBarHeight) *
@@ -70,9 +77,9 @@ export default function AppNavBar(props: Props) {
             }}
             style={{
               marginRight: "auto",
-              marginLeft: toRpx(20),
-              width: toRpx(55),
-              height: toRpx(55),
+              marginLeft: padding,
+              width: menuButtonHeight,
+              height: menuButtonHeight,
               borderRadius: "50%",
               borderWidth: toRpx(1),
               borderStyle: "solid",
@@ -83,7 +90,10 @@ export default function AppNavBar(props: Props) {
               backgroundColor: "#fff",
             }}
           >
-            <IconFont name="arrowleft" size={55} />
+            <IconFont
+              name="arrowleft"
+              size={menuButtonHeight}
+            />
           </View>
           <Text>{props.title}</Text>
         </View>
