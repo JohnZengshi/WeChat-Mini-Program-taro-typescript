@@ -1,6 +1,6 @@
 Component({
   properties: {
-    // eye-fill | eyeclose-fill | check | arrowleft | adduser | deleteuser | user | file-add | delete | right | arrowright | unorderedlist | orderedlist | file-add-fill | delete-fill | switchuser | appstoreadd | rotate-right
+    // reloadtime | message | home | sound | eye-fill | eyeclose-fill | check | arrowleft | adduser | deleteuser | user | file-add | delete | right | arrowright | unorderedlist | orderedlist | file-add-fill | delete-fill | switchuser | appstoreadd | rotate-right
     name: {
       type: String,
     },

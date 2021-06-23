@@ -4,6 +4,10 @@
 import React, { FunctionComponent } from 'react';
 import { ViewProps } from 'react-native';
 import { GProps } from 'react-native-svg';
+import IconReloadtime from './IconReloadtime';
+import IconMessage from './IconMessage';
+import IconHome from './IconHome';
+import IconSound from './IconSound';
 import IconEyeFill from './IconEyeFill';
 import IconEyecloseFill from './IconEyecloseFill';
 import IconCheck from './IconCheck';
@@ -23,7 +27,7 @@ import IconSwitchuser from './IconSwitchuser';
 import IconAppstoreadd from './IconAppstoreadd';
 import IconRotateRight from './IconRotateRight';
 
-export type IconNames = 'eye-fill' | 'eyeclose-fill' | 'check' | 'arrowleft' | 'adduser' | 'deleteuser' | 'user' | 'file-add' | 'delete' | 'right' | 'arrowright' | 'unorderedlist' | 'orderedlist' | 'file-add-fill' | 'delete-fill' | 'switchuser' | 'appstoreadd' | 'rotate-right';
+export type IconNames = 'reloadtime' | 'message' | 'home' | 'sound' | 'eye-fill' | 'eyeclose-fill' | 'check' | 'arrowleft' | 'adduser' | 'deleteuser' | 'user' | 'file-add' | 'delete' | 'right' | 'arrowright' | 'unorderedlist' | 'orderedlist' | 'file-add-fill' | 'delete-fill' | 'switchuser' | 'appstoreadd' | 'rotate-right';
 
 interface Props extends GProps, ViewProps {
   name: IconNames;
@@ -33,6 +37,14 @@ interface Props extends GProps, ViewProps {
 
 const IconFont: FunctionComponent<Props> = ({ name, ...rest }) => {
   switch (name) {
+    case 'reloadtime':
+      return <IconReloadtime {...rest} />;
+    case 'message':
+      return <IconMessage {...rest} />;
+    case 'home':
+      return <IconHome {...rest} />;
+    case 'sound':
+      return <IconSound {...rest} />;
     case 'eye-fill':
       return <IconEyeFill {...rest} />;
     case 'eyeclose-fill':

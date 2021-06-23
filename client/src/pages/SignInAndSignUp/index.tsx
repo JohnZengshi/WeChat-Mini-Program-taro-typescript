@@ -2,7 +2,7 @@
  * @Author: John
  * @Date: 2021-06-22 11:15:34
  * @LastEditors: John
- * @LastEditTime: 2021-06-23 10:52:48
+ * @LastEditTime: 2021-06-23 22:30:37
  */
 import { getNavUrl, toRpx } from "@/utils";
 import { Image, Text, View } from "@tarojs/components";

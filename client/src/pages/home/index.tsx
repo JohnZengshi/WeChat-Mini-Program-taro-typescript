@@ -1,13 +1,17 @@
 /*
  * @Author: your name
  * @Date: 2021-06-09 22:13:36
- * @LastEditTime: 2021-06-22 11:10:11
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-06-23 22:38:39
+ * @LastEditors: John
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/pages/index/index.tsx
  */
-import Taro, { switchTab } from "@tarojs/taro";
-import "./index.scss";
+import Taro, {
+  createSelectorQuery,
+  getCurrentInstance,
+  nextTick,
+  switchTab,
+} from "@tarojs/taro";
 import { Text, View } from "@fower/taro";
 import { PageListName } from "@/app.config";
 import AppNavBar from "@/components/AppNavBar";
@@ -15,16 +19,18 @@ import { useDispatch, useMappedState } from "@/store";
 import CommonBtn from "@/components/CommonBtn";
 import IconFont from "@/components/iconfont";
 import useAPI from "../../service/index";
-import { useEffect, useMemo } from "react";
+import { useEffect, useLayoutEffect, useMemo } from "react";
 import CloudDemo from "@/components/CloudDemo";
 import { CloudFunctionName } from "@/constants/cloudFunction";
 import useModel from "@/components/CommonModel";
 import { getNavUrl } from "../../utils/index";
+import { ThemeStyle } from "@/constants/theme";
 
 export default function Home() {
-  const { request } = useAPI();
   const { user } = useMappedState((state) => state);
   const dispatch = useDispatch();
+  const { request } = useAPI();
+
   const { open, Model } = useModel();
 
   useEffect(() => {
@@ -41,6 +47,15 @@ export default function Home() {
         });
       }
     );
+    nextTick(() => {
+      createSelectorQuery()
+        .select("#Home")
+        .boundingClientRect()
+        .exec((res) => {
+          console.log("Home", res);
+        });
+    });
+
     return () => {};
   }, []);
 
@@ -48,9 +63,13 @@ export default function Home() {
     <>
       <AppNavBar />
       {Model}
-      <View p10 pl12 pr12 className="index">
+      <View style={ThemeStyle.pageCommonStyle} id="Home">
         <CommonBtn
-          customStyle={{ display: "inline-block" }}
+          customStyle={{
+            ...ThemeStyle.bigBtnStyle,
+            width: "auto",
+            display: "inline-block",
+          }}
           text="Mine"
           onClick={() => {
             switchTab({
@@ -65,7 +84,7 @@ export default function Home() {
             />
           }
         />
-        <CloudDemo />
+        {/* <CloudDemo /> */}
       </View>
     </>
   );

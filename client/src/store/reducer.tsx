@@ -1,13 +1,12 @@
 /*
  * @Author: your name
  * @Date: 2021-06-10 18:35:25
- * @LastEditTime: 2021-06-16 11:56:11
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-06-23 22:58:15
+ * @LastEditors: John
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/store/reducer.tsx
  */
 import { Action, INITIAL_STATE, IState } from "./index";
-
 export default function reducer(
   state: IState = INITIAL_STATE,
   action: Action
@@ -37,6 +36,13 @@ export default function reducer(
       return {
         ...state,
         user: action.user,
+      };
+    }
+
+    case "update current page path": {
+      return {
+        ...state,
+        currentPagePath: action.currentPagePath,
       };
     }
 

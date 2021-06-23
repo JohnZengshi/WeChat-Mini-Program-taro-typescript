@@ -1,23 +1,29 @@
 /*
  * @Author: your name
  * @Date: 2021-06-11 14:36:25
- * @LastEditTime: 2021-06-16 11:34:38
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-06-23 23:00:57
+ * @LastEditors: John
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/service/index.ts
  */
 
-import { useDispatch, useMappedState } from "@/store";
+import {
+  makeStore,
+  useDispatch,
+  useMappedState,
+} from "@/store";
 import { cloud, General, showToast } from "@tarojs/taro";
 import { CloudFunctionName } from "../constants/cloudFunction";
 import statusCode from "http-status-codes";
 import { useEffect, useRef } from "react";
 
-export default function useAPI() {
-  const { user } = useMappedState((state) => state);
-  const dispatch = useDispatch();
-  const userRef = useRef<typeof user>(); // hooks为我们提供的一个通用容器，里面有一个current属性
-  userRef.current = user;
+export default function useAPI(
+  store?: ReturnType<typeof makeStore>
+) {
+  const { user } = store
+    ? store.getState()
+    : useMappedState((state) => state);
+  const dispatch = store ? store.dispatch : useDispatch();
   useEffect(() => {
     // console.log("userRef.current", userRef.current);
   }, [user]);

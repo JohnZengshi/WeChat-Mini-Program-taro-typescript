@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-09 22:13:36
- * @LastEditTime: 2021-06-23 10:47:32
+ * @LastEditTime: 2021-06-23 23:03:48
  * @LastEditors: John
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/app.config.ts
@@ -11,7 +11,6 @@ import { useGlobalIconFont } from "./components/iconfont/helper";
 import { IconNames } from "./components/iconfont/index";
 
 export enum PageListName {
-  Index = "pages/Index/index",
   Home = "pages/Home/index",
   Mine = "pages/Mine/index",
   SignUp = "pages/SignUp/index",
@@ -28,6 +27,7 @@ export const PageList: (Taro.TarbarList & {
     pagePath: PageListName.Home,
     iconPath: "/static/images/ic_home_nor.png",
     selectedIconPath: "/static/images/ic_home_sel.png",
+    iconName: "home",
   },
   {
     text: "购物车",
@@ -35,12 +35,12 @@ export const PageList: (Taro.TarbarList & {
     iconPath: "/static/images/ic_shopping_cart_nor.png",
     selectedIconPath:
       "/static/images/ic_shopping_cart_sel.png",
+    iconName: "reloadtime",
   },
 ];
 
 export const config: Config = {
   pages: [
-    PageListName.Index,
     PageListName.Home,
     PageListName.Mine,
     PageListName.SignUp,
