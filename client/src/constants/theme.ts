@@ -4,8 +4,8 @@ import { CSSProperties } from "react";
 /*
  * @Author: your name
  * @Date: 2021-06-22 14:39:39
- * @LastEditTime: 2021-06-22 22:21:54
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-06-23 10:49:45
+ * @LastEditors: John
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/constants/theme.ts
  */
@@ -25,6 +25,7 @@ export const ThemeStyle: {
     paddingLeft: toRpx(24),
     paddingRight: toRpx(24),
     paddingBottom: "env(safe-area-inset-bottom)",
+    minHeight: "100vh",
   },
   bigBtnStyle: {
     width: "100%",

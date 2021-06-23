@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-06-22 14:47:06
- * @LastEditTime: 2021-06-22 22:13:32
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /taro-typescript/client/src/pages/CreateAccount/index.tsx
- */
 import { Image, Text, View } from "@tarojs/components";
 import Taro from "@tarojs/taro";
 import { Theme, ThemeStyle } from "../../constants/theme";

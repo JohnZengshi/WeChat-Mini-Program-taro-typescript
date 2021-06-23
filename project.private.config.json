@@ -29,6 +29,12 @@
           "pathName": "pages/SignIn/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "Welcome",
+          "pathName": "pages/Welcome/index",
+          "query": "",
+          "scene": null
         }
       ]
     }

@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2021-06-22 17:52:33
- * @LastEditTime: 2021-06-22 18:19:10
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-06-23 11:20:57
+ * @LastEditors: John
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/pages/SignIn/index.tsx
  */
@@ -17,7 +17,7 @@ import {
   Text,
   View,
 } from "@tarojs/components";
-import Taro, { navigateTo } from "@tarojs/taro";
+import Taro, { navigateTo, redirectTo } from "@tarojs/taro";
 import { useState } from "react";
 import { Theme, ThemeStyle } from "../../constants/theme";
 import Group6800 from "../../assets/images/Group6800.png";
@@ -79,7 +79,11 @@ export default function SignIn() {
         <CommonBtn
           text="LOG IN"
           customStyle={ThemeStyle.bigBtnStyle}
-          onClick={() => {}}
+          onClick={() => {
+            redirectTo({
+              url: getNavUrl(PageListName.Welcome),
+            });
+          }}
         />
         <BottomCommonText
           baseText="ALREADY HAVE AN ACCOUNT?"

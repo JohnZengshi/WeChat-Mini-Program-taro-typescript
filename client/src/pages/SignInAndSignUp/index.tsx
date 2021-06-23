@@ -1,21 +1,19 @@
 /*
- * @Author: your name
+ * @Author: John
  * @Date: 2021-06-22 11:15:34
- * @LastEditTime: 2021-06-22 18:19:20
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /taro-typescript/client/src/pages/login/index.tsx
+ * @LastEditors: John
+ * @LastEditTime: 2021-06-23 10:52:48
  */
 import { getNavUrl, toRpx } from "@/utils";
 import { Image, Text, View } from "@tarojs/components";
 import Taro, { navigateTo } from "@tarojs/taro";
-import Logo from "../../assets/images/Logo.png";
 import LoginBack from "../../assets/images/LoginBack.png";
 import Frame from "../../assets/images/Frame.png";
 import CommonBtn from "@/components/CommonBtn";
 import { Theme, ThemeStyle } from "../../constants/theme";
 import { PageListName } from "../../app.config";
 import BottomCommonText from "@/components/BottomCommonText";
+import CommonLogo from "@/components/CommonLogo";
 export default function SignInAndSignUp() {
   return (
     <>
@@ -30,13 +28,9 @@ export default function SignInAndSignUp() {
         }}
       />
       <View style={ThemeStyle.pageCommonStyle}>
-        <Image
-          style={{
-            width: toRpx(168),
-            height: toRpx(30),
-            marginTop: toRpx(50),
-          }}
-          src={Logo}
+        <CommonLogo
+          mode="light"
+          style={{ marginTop: toRpx(50) }}
         />
         <Image
           style={{
