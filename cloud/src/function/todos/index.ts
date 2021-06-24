@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2021-06-10 21:15:37
- * @LastEditTime: 2021-06-16 11:49:00
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-06-24 10:31:40
+ * @LastEditors: John
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/cloud/src/function/user/index.ts
  */
@@ -68,7 +68,7 @@ exports.main = async (
     };
   };
   if (!event.params._openid)
-    return { code: statusCode.BAD_REQUEST, msg: "openId不能为空！" };
+    return { code: statusCode.UNAUTHORIZED, msg: "openId不能为空！" };
   switch (event.action) {
     case "getList":
       return getList(event.params);

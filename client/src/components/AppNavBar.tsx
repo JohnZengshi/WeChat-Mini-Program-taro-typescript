@@ -8,11 +8,12 @@ import Taro, {
 import { useEffect, useState } from "react";
 import IconFont from "./iconfont";
 import { toRpx } from "../utils/index";
+import { useMappedState } from "@/store";
 
 /*
  * @Author: your name
  * @Date: 2021-06-10 16:43:03
- * @LastEditTime: 2021-06-22 21:58:27
+ * @LastEditTime: 2021-06-24 11:45:41
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/components/appNavBar/index.tsx
@@ -21,6 +22,7 @@ interface Props {
   title?: string;
 }
 export default function AppNavBar(props: Props) {
+  const { currentPages } = useMappedState((state) => state);
   const [statusBarHeight, setStatusBarHeight] = useState(0);
   const [navHeight, setNavHeight] = useState(0);
   const [padding, setPadding] = useState(0);
@@ -70,31 +72,33 @@ export default function AppNavBar(props: Props) {
             justifyContent: "center",
           }}
         >
-          <View
-            onClick={() => {
-              console.log("click");
-              navigateBack();
-            }}
-            style={{
-              marginRight: "auto",
-              marginLeft: padding,
-              width: menuButtonHeight,
-              height: menuButtonHeight,
-              borderRadius: "50%",
-              borderWidth: toRpx(1),
-              borderStyle: "solid",
-              borderColor: "#EBEAEC",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              backgroundColor: "#fff",
-            }}
-          >
-            <IconFont
-              name="arrowleft"
-              size={menuButtonHeight}
-            />
-          </View>
+          {currentPages.length > 1 && (
+            <View
+              onClick={() => {
+                console.log("click");
+                navigateBack();
+              }}
+              style={{
+                marginRight: "auto",
+                marginLeft: padding,
+                width: menuButtonHeight,
+                height: menuButtonHeight,
+                borderRadius: "50%",
+                borderWidth: toRpx(1),
+                borderStyle: "solid",
+                borderColor: "#EBEAEC",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: "#fff",
+              }}
+            >
+              <IconFont
+                name="arrowleft"
+                size={menuButtonHeight}
+              />
+            </View>
+          )}
           <Text>{props.title}</Text>
         </View>
       </View>

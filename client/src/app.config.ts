@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-09 22:13:36
- * @LastEditTime: 2021-06-23 23:03:48
+ * @LastEditTime: 2021-06-24 10:28:07
  * @LastEditors: John
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/app.config.ts
@@ -23,14 +23,14 @@ export const PageList: (Taro.TarbarList & {
   selectIconName?: IconNames;
 })[] = [
   {
-    text: "首页",
+    text: "Home",
     pagePath: PageListName.Home,
     iconPath: "/static/images/ic_home_nor.png",
     selectedIconPath: "/static/images/ic_home_sel.png",
     iconName: "home",
   },
   {
-    text: "购物车",
+    text: "Sleep",
     pagePath: PageListName.Mine,
     iconPath: "/static/images/ic_shopping_cart_nor.png",
     selectedIconPath:

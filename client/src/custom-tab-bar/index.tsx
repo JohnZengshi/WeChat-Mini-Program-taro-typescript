@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-10 12:42:21
- * @LastEditTime: 2021-06-23 22:18:56
+ * @LastEditTime: 2021-06-24 11:58:45
  * @LastEditors: John
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/custom-tab-bar/index.tsx
@@ -19,6 +19,7 @@ import {
   useEffect,
   useState,
   useLayoutEffect,
+  useMemo,
 } from "react";
 import { PageList, PageListName } from "../app.config";
 import { getNavUrl, toRpx } from "../utils/index";
@@ -27,8 +28,10 @@ import React from "react";
 import { useMappedState } from "@/store";
 
 export default function Tabbar() {
-  const { currentPagePath } = useMappedState(
-    (state) => state
+  const { currentPages } = useMappedState((state) => state);
+  const currentPagePath = useMemo(
+    () => currentPages[currentPages.length - 1]?.route,
+    [currentPages]
   );
   useEffect(() => {
     // updateTabar();

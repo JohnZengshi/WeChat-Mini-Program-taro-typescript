@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-10 18:35:25
- * @LastEditTime: 2021-06-23 22:58:15
+ * @LastEditTime: 2021-06-24 11:53:55
  * @LastEditors: John
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/store/reducer.tsx
@@ -39,10 +39,10 @@ export default function reducer(
       };
     }
 
-    case "update current page path": {
+    case "update current pages": {
       return {
         ...state,
-        currentPagePath: action.currentPagePath,
+        currentPages: action.currentPages,
       };
     }
 

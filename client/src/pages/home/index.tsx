@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-09 22:13:36
- * @LastEditTime: 2021-06-23 22:38:39
+ * @LastEditTime: 2021-06-24 11:03:27
  * @LastEditors: John
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/pages/index/index.tsx
@@ -84,7 +84,7 @@ export default function Home() {
             />
           }
         />
-        {/* <CloudDemo /> */}
+        <CloudDemo />
       </View>
     </>
   );
