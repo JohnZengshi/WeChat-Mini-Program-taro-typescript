@@ -4,6 +4,7 @@
 import React, { FunctionComponent } from 'react';
 import { ViewProps } from 'react-native';
 import { GProps } from 'react-native-svg';
+import IconPlayCircle from './IconPlayCircle';
 import IconReloadtime from './IconReloadtime';
 import IconMessage from './IconMessage';
 import IconHome from './IconHome';
@@ -27,7 +28,7 @@ import IconSwitchuser from './IconSwitchuser';
 import IconAppstoreadd from './IconAppstoreadd';
 import IconRotateRight from './IconRotateRight';
 
-export type IconNames = 'reloadtime' | 'message' | 'home' | 'sound' | 'eye-fill' | 'eyeclose-fill' | 'check' | 'arrowleft' | 'adduser' | 'deleteuser' | 'user' | 'file-add' | 'delete' | 'right' | 'arrowright' | 'unorderedlist' | 'orderedlist' | 'file-add-fill' | 'delete-fill' | 'switchuser' | 'appstoreadd' | 'rotate-right';
+export type IconNames = 'play-circle' | 'reloadtime' | 'message' | 'home' | 'sound' | 'eye-fill' | 'eyeclose-fill' | 'check' | 'arrowleft' | 'adduser' | 'deleteuser' | 'user' | 'file-add' | 'delete' | 'right' | 'arrowright' | 'unorderedlist' | 'orderedlist' | 'file-add-fill' | 'delete-fill' | 'switchuser' | 'appstoreadd' | 'rotate-right';
 
 interface Props extends GProps, ViewProps {
   name: IconNames;
@@ -37,6 +38,8 @@ interface Props extends GProps, ViewProps {
 
 const IconFont: FunctionComponent<Props> = ({ name, ...rest }) => {
   switch (name) {
+    case 'play-circle':
+      return <IconPlayCircle {...rest} />;
     case 'reloadtime':
       return <IconReloadtime {...rest} />;
     case 'message':

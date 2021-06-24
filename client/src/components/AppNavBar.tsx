@@ -1,9 +1,11 @@
 import { Text, View } from "@fower/taro";
 import Taro, {
+  createSelectorQuery,
   getApp,
   getMenuButtonBoundingClientRect,
   getSystemInfo,
   navigateBack,
+  nextTick,
 } from "@tarojs/taro";
 import { useEffect, useState } from "react";
 import IconFont from "./iconfont";
@@ -49,7 +51,9 @@ export default function AppNavBar(props: Props) {
   return (
     <>
       <View
+        id="displayBox"
         style={{
+          width: "100%",
           height: statusBarHeight + navHeight,
         }}
       ></View>

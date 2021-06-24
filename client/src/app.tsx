@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-09 22:13:36
- * @LastEditTime: 2021-06-24 12:01:13
+ * @LastEditTime: 2021-06-24 13:57:22
  * @LastEditors: John
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/app.ts
@@ -16,11 +16,13 @@ import { makeStore } from "./store/index";
 const store = makeStore();
 
 function App(props: { children: ReactNode }) {
-  // const { login } = useAPI(store);
-
   useEffect(() => {
     if (process.env.TARO_ENV === "weapp") {
-      cloud.init();
+      try {
+        cloud.init();
+      } catch (error) {
+        console.log(error);
+      }
     }
     wx.onAppRoute(function () {
       const page = getCurrentPages();

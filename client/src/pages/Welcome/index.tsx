@@ -2,21 +2,23 @@
  * @Author: John
  * @Date: 2021-06-23 10:11:11
  * @LastEditors: John
- * @LastEditTime: 2021-06-23 11:16:56
+ * @LastEditTime: 2021-06-24 22:31:46
  */
 import CommonLogo from "@/components/CommonLogo";
 import { toRpx } from "@/utils";
 import { View, Text, Image } from "@tarojs/components";
-import Taro from "@tarojs/taro";
+import Taro, { switchTab } from "@tarojs/taro";
 import { ThemeStyle, Theme } from "../../constants/theme";
 import welcomeBg from "../../assets/images/welcomeBg.png";
 import CommonBtn from "@/components/CommonBtn";
+import { getNavUrl } from "../../utils/index";
+import { PageListName } from "@/app.config";
 
 export default function Welcome() {
   return (
     <View
       style={{
-        ...ThemeStyle.pageCommonStyle,
+        ...ThemeStyle.flexPageCommonStyle,
         backgroundColor: Theme.baseColor,
       }}
     >
@@ -71,6 +73,9 @@ export default function Welcome() {
           marginTop: toRpx(438),
           color: "#3F414E",
         }}
+        onClick={() =>
+          switchTab({ url: getNavUrl(PageListName.Home) })
+        }
       />
     </View>
   );

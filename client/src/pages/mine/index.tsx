@@ -1,3 +1,4 @@
+import TabbarPageWarp from "@/components/TabbarPageWarp";
 import { CloudFunctionName } from "@/constants/cloudFunction";
 import { useMappedState } from "@/store";
 import { View } from "@fower/taro";
@@ -9,8 +10,8 @@ import useAPI from "../../service/index";
 /*
  * @Author: your name
  * @Date: 2021-06-10 10:08:53
- * @LastEditTime: 2021-06-15 14:21:45
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-06-24 15:57:29
+ * @LastEditors: John
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/pages/mine/index.tsx
  */
@@ -28,15 +29,8 @@ export default function Mine() {
     return () => {};
   }, []);
   return (
-    <View
-      css={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
+    <TabbarPageWarp>
       <Text>Mine:{user?.OPENID}</Text>
-    </View>
+    </TabbarPageWarp>
   );
 }

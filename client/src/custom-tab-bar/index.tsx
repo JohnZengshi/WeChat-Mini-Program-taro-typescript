@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-10 12:42:21
- * @LastEditTime: 2021-06-24 11:58:45
+ * @LastEditTime: 2021-06-24 22:12:54
  * @LastEditors: John
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/custom-tab-bar/index.tsx
@@ -10,21 +10,13 @@ import IconFont from "@/components/iconfont";
 import { View } from "@fower/taro";
 import Taro, {
   createSelectorQuery,
-  getCurrentPages,
   switchTab,
-  getCurrentInstance,
   nextTick,
 } from "@tarojs/taro";
-import {
-  useEffect,
-  useState,
-  useLayoutEffect,
-  useMemo,
-} from "react";
+import { useEffect, useLayoutEffect, useMemo } from "react";
 import { PageList, PageListName } from "../app.config";
 import { getNavUrl, toRpx } from "../utils/index";
 import { Theme } from "../constants/theme";
-import React from "react";
 import { useMappedState } from "@/store";
 
 export default function Tabbar() {
@@ -41,14 +33,14 @@ export default function Tabbar() {
 
   useLayoutEffect(() => {
     nextTick(() => {
-      PageList.forEach((_v, i) => {
-        createSelectorQuery()
-          .select("#tabItem_" + i)
-          .boundingClientRect()
-          .exec((res) => {
-            console.log("#tabItem_" + i, res);
-          });
-      });
+      // PageList.forEach((_v, i) => {
+      //   createSelectorQuery()
+      //     .select("#tabItem_" + i)
+      //     .boundingClientRect()
+      //     .exec((res) => {
+      //       console.log("#tabItem_" + i, res);
+      //     });
+      // });
     });
   }, []);
 
@@ -64,6 +56,8 @@ export default function Tabbar() {
         paddingBottom: "env(safe-area-inset-bottom)",
         backgroundColor: "white",
         position: "relative",
+        boxShadow: "2px -5px 17px rgba(84, 87, 92, 0.1)",
+        height: toRpx(98),
       }}
     >
       {/* <View
@@ -110,6 +104,7 @@ export default function Tabbar() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
+              transition: "all 0.5s",
             }}
           >
             <IconFont
@@ -135,6 +130,7 @@ export default function Tabbar() {
               lineHeight: "108.1%",
               marginBottom: toRpx(5),
               marginTop: toRpx(5),
+              transition: "all 0.8s",
             }}
           >
             {v.text}
