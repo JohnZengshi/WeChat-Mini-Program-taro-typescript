@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-22 17:52:33
- * @LastEditTime: 2021-06-23 11:20:57
+ * @LastEditTime: 2021-06-25 09:57:03
  * @LastEditors: John
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/pages/SignIn/index.tsx
@@ -38,7 +38,7 @@ export default function SignIn() {
         }}
         src={Group6800}
       />
-      <View style={ThemeStyle.pageCommonStyle}>
+      <View style={ThemeStyle.autoFullPageCommonStyle}>
         <Text
           style={{
             fontSize: toRpx(28),

@@ -8,7 +8,7 @@ import { CSSProperties } from "react";
 /*
  * @Author: your name
  * @Date: 2021-06-22 14:39:39
- * @LastEditTime: 2021-06-24 22:31:36
+ * @LastEditTime: 2021-06-25 09:55:38
  * @LastEditors: John
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/constants/theme.ts
@@ -32,18 +32,16 @@ const pageCommonStyle: CSSProperties = {
 };
 export const ThemeStyle: {
   contentStyle: CSSProperties;
-  pageCommonStyle: CSSProperties;
   fullPageCommonStyle: CSSProperties;
-  flexPageCommonStyle: CSSProperties;
+  autoFullPageCommonStyle: CSSProperties;
   bigBtnStyle: CSSProperties;
 } = {
   contentStyle,
-  pageCommonStyle,
   fullPageCommonStyle: {
     ...pageCommonStyle,
     height: "100%",
   },
-  flexPageCommonStyle: {
+  autoFullPageCommonStyle: {
     ...pageCommonStyle,
     minHeight: "100%",
   },

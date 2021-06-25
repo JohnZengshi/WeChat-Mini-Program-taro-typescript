@@ -24,7 +24,7 @@ export default function SignUp() {
         }}
         src={Group6800}
       />
-      <View style={ThemeStyle.pageCommonStyle}>
+      <View style={ThemeStyle.autoFullPageCommonStyle}>
         <Text
           style={{
             fontSize: toRpx(28),

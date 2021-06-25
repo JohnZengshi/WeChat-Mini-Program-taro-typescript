@@ -2,7 +2,7 @@
  * @Author: John
  * @Date: 2021-06-22 11:15:34
  * @LastEditors: John
- * @LastEditTime: 2021-06-24 22:28:40
+ * @LastEditTime: 2021-06-25 10:24:46
  */
 import { getNavUrl, toRpx } from "@/utils";
 import { Image, Text, View } from "@tarojs/components";
@@ -10,7 +10,7 @@ import Taro, { navigateTo } from "@tarojs/taro";
 import LoginBack from "../../assets/images/LoginBack.png";
 import Frame from "../../assets/images/Frame.png";
 import CommonBtn from "@/components/CommonBtn";
-import { Theme, ThemeStyle } from "../../constants/theme";
+import { ThemeStyle } from "../../constants/theme";
 import { PageListName } from "../../app.config";
 import BottomCommonText from "@/components/BottomCommonText";
 import CommonLogo from "@/components/CommonLogo";
@@ -27,7 +27,7 @@ export default function SignInAndSignUp() {
           height: toRpx(504),
         }}
       />
-      <View style={ThemeStyle.pageCommonStyle}>
+      <View style={ThemeStyle.autoFullPageCommonStyle}>
         <CommonLogo
           mode="light"
           style={{ marginTop: toRpx(50) }}

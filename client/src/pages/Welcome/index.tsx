@@ -18,7 +18,7 @@ export default function Welcome() {
   return (
     <View
       style={{
-        ...ThemeStyle.flexPageCommonStyle,
+        ...ThemeStyle.autoFullPageCommonStyle,
         backgroundColor: Theme.baseColor,
       }}
     >
