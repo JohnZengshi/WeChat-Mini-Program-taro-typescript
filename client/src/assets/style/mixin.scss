@@ -1,0 +1,3 @@
+@mixin toRpx($Attribute, $value) {
+  #{$Attribute}: $value * 375 / 424 * 2;
+}

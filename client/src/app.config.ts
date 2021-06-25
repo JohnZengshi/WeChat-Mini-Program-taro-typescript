@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-09 22:13:36
- * @LastEditTime: 2021-06-24 10:28:07
+ * @LastEditTime: 2021-06-25 10:28:50
  * @LastEditors: John
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/app.config.ts
@@ -17,6 +17,7 @@ export enum PageListName {
   SignIn = "pages/SignIn/index",
   SignInAndSignUp = "pages/SignInAndSignUp/index",
   Welcome = "pages/Welcome/index",
+  CourseDetail = "pages/CourseDetail/index",
 }
 export const PageList: (Taro.TarbarList & {
   iconName?: IconNames;
@@ -47,6 +48,7 @@ export const config: Config = {
     PageListName.SignIn,
     PageListName.SignInAndSignUp,
     PageListName.Welcome,
+    PageListName.CourseDetail,
   ],
   window: {
     backgroundTextStyle: "light",

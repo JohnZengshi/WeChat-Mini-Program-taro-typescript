@@ -1,0 +1,23 @@
+@import "../../assets/style/mixin.scss";
+
+.at-tabs {
+  .at-tabs__header {
+    .at-tabs__item {
+      @include toRpx(font-size, 16px);
+      padding: 0;
+      @include toRpx(padding-top, 16px);
+      @include toRpx(padding-bottom, 16px);
+      &.at-tabs__item--active {
+        color: "#8E97FD";
+      }
+      .at-tabs__item-underline {
+        background-color: "#8E97FD";
+        @include toRpx(width, 47px);
+        @include toRpx(height, 2px);
+        @include toRpx(border-radius, 2px);
+        left: 50%;
+        @include toRpx(margin-left, -23px);
+      }
+    }
+  }
+}

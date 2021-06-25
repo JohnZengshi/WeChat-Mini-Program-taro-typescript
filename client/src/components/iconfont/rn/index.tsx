@@ -4,6 +4,8 @@
 import React, { FunctionComponent } from 'react';
 import { ViewProps } from 'react-native';
 import { GProps } from 'react-native-svg';
+import IconHeartFill from './IconHeartFill';
+import IconCustomerserviceFill from './IconCustomerserviceFill';
 import IconPlayCircle from './IconPlayCircle';
 import IconReloadtime from './IconReloadtime';
 import IconMessage from './IconMessage';
@@ -28,7 +30,7 @@ import IconSwitchuser from './IconSwitchuser';
 import IconAppstoreadd from './IconAppstoreadd';
 import IconRotateRight from './IconRotateRight';
 
-export type IconNames = 'play-circle' | 'reloadtime' | 'message' | 'home' | 'sound' | 'eye-fill' | 'eyeclose-fill' | 'check' | 'arrowleft' | 'adduser' | 'deleteuser' | 'user' | 'file-add' | 'delete' | 'right' | 'arrowright' | 'unorderedlist' | 'orderedlist' | 'file-add-fill' | 'delete-fill' | 'switchuser' | 'appstoreadd' | 'rotate-right';
+export type IconNames = 'heart-fill' | 'customerservice-fill' | 'play-circle' | 'reloadtime' | 'message' | 'home' | 'sound' | 'eye-fill' | 'eyeclose-fill' | 'check' | 'arrowleft' | 'adduser' | 'deleteuser' | 'user' | 'file-add' | 'delete' | 'right' | 'arrowright' | 'unorderedlist' | 'orderedlist' | 'file-add-fill' | 'delete-fill' | 'switchuser' | 'appstoreadd' | 'rotate-right';
 
 interface Props extends GProps, ViewProps {
   name: IconNames;
@@ -38,6 +40,10 @@ interface Props extends GProps, ViewProps {
 
 const IconFont: FunctionComponent<Props> = ({ name, ...rest }) => {
   switch (name) {
+    case 'heart-fill':
+      return <IconHeartFill {...rest} />;
+    case 'customerservice-fill':
+      return <IconCustomerserviceFill {...rest} />;
     case 'play-circle':
       return <IconPlayCircle {...rest} />;
     case 'reloadtime':

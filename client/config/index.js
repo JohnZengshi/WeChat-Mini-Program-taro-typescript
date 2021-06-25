@@ -1,8 +1,8 @@
 /*
  * @Author: your name
  * @Date: 2021-06-09 22:13:36
- * @LastEditTime: 2021-06-22 14:13:29
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-06-25 11:30:42
+ * @LastEditors: John
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/config/index.js
  */
@@ -11,11 +11,13 @@ const vantComponentsList = [];
 const config = {
   projectName: "taro-typescript",
   date: "2021-6-9",
-  // designWidth: 750,
+  // designWidth: 424,
   // deviceRatio: {
-  //   640: 2.34 / 2,
-  //   750: 1,
-  //   828: 1.81 / 2,
+  //   640: 0.66,
+  //   750: 0.56,
+  //   828: 0.5,
+  //   424: 1,
+  //   320: 1.32,
   // },
   sourceRoot: "src",
   outputRoot: "dist",

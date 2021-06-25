@@ -1,18 +1,14 @@
 /*
  * @Author: your name
  * @Date: 2021-06-10 12:42:21
- * @LastEditTime: 2021-06-24 22:12:54
+ * @LastEditTime: 2021-06-25 15:01:57
  * @LastEditors: John
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/custom-tab-bar/index.tsx
  */
 import IconFont from "@/components/iconfont";
 import { View } from "@fower/taro";
-import Taro, {
-  createSelectorQuery,
-  switchTab,
-  nextTick,
-} from "@tarojs/taro";
+import Taro, { switchTab, nextTick } from "@tarojs/taro";
 import { useEffect, useLayoutEffect, useMemo } from "react";
 import { PageList, PageListName } from "../app.config";
 import { getNavUrl, toRpx } from "../utils/index";

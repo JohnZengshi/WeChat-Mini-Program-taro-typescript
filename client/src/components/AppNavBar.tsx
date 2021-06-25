@@ -2,6 +2,7 @@ import { Text, View } from "@fower/taro";
 import Taro, {
   createSelectorQuery,
   getApp,
+  getCurrentInstance,
   getMenuButtonBoundingClientRect,
   getSystemInfo,
   navigateBack,
@@ -9,8 +10,9 @@ import Taro, {
 } from "@tarojs/taro";
 import { useEffect, useState } from "react";
 import IconFont from "./iconfont";
-import { toRpx } from "../utils/index";
-import { useMappedState } from "@/store";
+import { toRpx, getNavUrl } from "../utils/index";
+import { useDispatch, useMappedState } from "@/store";
+import { PageListName } from "../app.config";
 
 /*
  * @Author: your name
@@ -25,12 +27,24 @@ interface Props {
 }
 export default function AppNavBar(props: Props) {
   const { currentPages } = useMappedState((state) => state);
+  const dispatch = useDispatch();
   const [statusBarHeight, setStatusBarHeight] = useState(0);
   const [navHeight, setNavHeight] = useState(0);
   const [padding, setPadding] = useState(0);
   const [menuButtonHeight, setMenuButtonHeight] =
     useState(0);
+  const [currentInstancePage, setCurrentInstancePage] =
+    useState<string | undefined>();
   useEffect(() => {
+    if (currentPages.length == 0) {
+      dispatch({
+        type: "update current pages",
+        currentPages: getCurrentPages(),
+      });
+    }
+    setCurrentInstancePage(
+      getCurrentInstance().router?.path
+    );
     getSystemInfo().then((res) => {
       setStatusBarHeight(res.statusBarHeight);
       const menuButtonBoundingClient =
@@ -61,8 +75,8 @@ export default function AppNavBar(props: Props) {
         style={{
           display: "flex",
           flexDirection: "column",
-          // position: "relative",
           position: "fixed",
+          width: "100%",
           top: 0,
           zIndex: 999,
         }}
@@ -76,33 +90,39 @@ export default function AppNavBar(props: Props) {
             justifyContent: "center",
           }}
         >
-          {currentPages.length > 1 && (
-            <View
-              onClick={() => {
-                console.log("click");
-                navigateBack();
-              }}
-              style={{
-                marginRight: "auto",
-                marginLeft: padding,
-                width: menuButtonHeight,
-                height: menuButtonHeight,
-                borderRadius: "50%",
-                borderWidth: toRpx(1),
-                borderStyle: "solid",
-                borderColor: "#EBEAEC",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                backgroundColor: "#fff",
-              }}
-            >
-              <IconFont
-                name="arrowleft"
-                size={menuButtonHeight}
-              />
-            </View>
-          )}
+          {currentPages.length > 1 &&
+            currentInstancePage ==
+              getNavUrl(
+                getCurrentPages()[
+                  getCurrentPages().length - 1
+                ]?.route as PageListName
+              ) && (
+              <View
+                onClick={() => {
+                  console.log("click");
+                  navigateBack();
+                }}
+                style={{
+                  marginRight: "auto",
+                  marginLeft: padding,
+                  width: menuButtonHeight,
+                  height: menuButtonHeight,
+                  borderRadius: "50%",
+                  borderWidth: toRpx(1),
+                  borderStyle: "solid",
+                  borderColor: "#EBEAEC",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: "#fff",
+                }}
+              >
+                <IconFont
+                  name="arrowleft"
+                  size={menuButtonHeight}
+                />
+              </View>
+            )}
           <Text>{props.title}</Text>
         </View>
       </View>

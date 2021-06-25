@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-09 22:13:36
- * @LastEditTime: 2021-06-24 13:57:22
+ * @LastEditTime: 2021-06-25 14:57:57
  * @LastEditors: John
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/app.ts
@@ -16,6 +16,13 @@ import { makeStore } from "./store/index";
 const store = makeStore();
 
 function App(props: { children: ReactNode }) {
+  const updateCurrentPages = () => {
+    const page = getCurrentPages();
+    store.dispatch({
+      type: "update current pages",
+      currentPages: page,
+    });
+  };
   useEffect(() => {
     if (process.env.TARO_ENV === "weapp") {
       try {
@@ -24,12 +31,9 @@ function App(props: { children: ReactNode }) {
         console.log(error);
       }
     }
+    updateCurrentPages();
     wx.onAppRoute(function () {
-      const page = getCurrentPages();
-      store.dispatch({
-        type: "update current pages",
-        currentPages: page,
-      });
+      updateCurrentPages();
     });
     return () => {};
   }, []);

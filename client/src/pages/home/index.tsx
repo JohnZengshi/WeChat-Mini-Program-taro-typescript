@@ -1,13 +1,14 @@
 /*
  * @Author: your name
  * @Date: 2021-06-09 22:13:36
- * @LastEditTime: 2021-06-24 22:15:50
+ * @LastEditTime: 2021-06-25 10:31:11
  * @LastEditors: John
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/pages/index/index.tsx
  */
 import Taro, {
   createSelectorQuery,
+  navigateTo,
   nextTick,
 } from "@tarojs/taro";
 import { View } from "@fower/taro";
@@ -19,33 +20,17 @@ import {
   ScrollView,
   Text,
 } from "@tarojs/components";
-import { toRpx } from "../../utils/index";
+import { getNavUrl, toRpx } from "../../utils/index";
 import TabbarPageWarp from "@/components/TabbarPageWarp";
 import CommonBtn from "@/components/CommonBtn";
 import { ViewProps } from "@tarojs/components/types/View";
 import IconFont from "@/components/iconfont";
 import { ThemeStyle } from "../../constants/theme";
+import { PageListName } from "@/app.config";
 export default function Home() {
-  const [scrollViewHeight, setScrollViewHeight] =
-    useState(0);
   const [refresherTriggered, setRefresherTriggered] =
     useState(false);
   useEffect(() => {
-    console.log("??????");
-    nextTick(() => {
-      createSelectorQuery()
-        .select("#scrollWarp")
-        .boundingClientRect()
-        .exec(
-          (
-            res: Taro.NodesRef.BoundingClientRectCallbackResult
-          ) => {
-            console.log(res);
-
-            setScrollViewHeight(res.height);
-          }
-        );
-    });
     return () => {};
   }, []);
 
@@ -90,6 +75,7 @@ export default function Home() {
     text: [string, string, string];
     mode: "light" | "dark";
     bg: any;
+    onClickStart?: () => void;
   };
   const BaseCard = (props: BaseCardProps) => {
     return (
@@ -164,6 +150,7 @@ export default function Home() {
             </Text>
             <CommonBtn
               text="START"
+              onClick={props.onClickStart}
               customStyle={{
                 width: toRpx(70),
                 height: toRpx(35),
@@ -310,6 +297,13 @@ export default function Home() {
                 bg={require("../../assets/images/Course.png")}
                 text={["Basics", "COURSE", "3-10 MIN"]}
                 mode="light"
+                onClickStart={() =>
+                  navigateTo({
+                    url: getNavUrl(
+                      PageListName.CourseDetail
+                    ),
+                  })
+                }
               />
               <BaseCard
                 backgroundColor="#FFC97E"
