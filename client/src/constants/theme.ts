@@ -8,7 +8,7 @@ import { CSSProperties } from "react";
 /*
  * @Author: your name
  * @Date: 2021-06-22 14:39:39
- * @LastEditTime: 2021-06-25 09:55:38
+ * @LastEditTime: 2021-06-25 18:00:29
  * @LastEditors: John
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/constants/theme.ts
@@ -25,6 +25,7 @@ const contentStyle: CSSProperties = {
   paddingLeft: toRpx(24),
   paddingRight: toRpx(24),
   boxSizing: "border-box",
+  width: "100%",
 };
 const pageCommonStyle: CSSProperties = {
   ...contentStyle,

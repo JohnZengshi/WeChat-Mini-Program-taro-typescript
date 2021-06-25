@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-06-09 22:13:36
- * @LastEditTime: 2021-06-25 10:28:50
+ * @LastEditTime: 2021-06-25 15:13:07
  * @LastEditors: John
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/app.config.ts
@@ -18,6 +18,7 @@ export enum PageListName {
   SignInAndSignUp = "pages/SignInAndSignUp/index",
   Welcome = "pages/Welcome/index",
   CourseDetail = "pages/CourseDetail/index",
+  Meditate = "pages/Meditate/index",
 }
 export const PageList: (Taro.TarbarList & {
   iconName?: IconNames;
@@ -38,6 +39,11 @@ export const PageList: (Taro.TarbarList & {
       "/static/images/ic_shopping_cart_sel.png",
     iconName: "reloadtime",
   },
+  {
+    text: "Meditate",
+    pagePath: PageListName.Meditate,
+    iconName: "message",
+  },
 ];
 
 export const config: Config = {
@@ -49,6 +55,7 @@ export const config: Config = {
     PageListName.SignInAndSignUp,
     PageListName.Welcome,
     PageListName.CourseDetail,
+    PageListName.Meditate,
   ],
   window: {
     backgroundTextStyle: "light",

@@ -41,6 +41,18 @@
           "pathName": "pages/CourseDetail/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "Meditate",
+          "pathName": "pages/Meditate/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "Mine",
+          "pathName": "pages/Mine/index",
+          "query": "",
+          "scene": null
         }
       ]
     }

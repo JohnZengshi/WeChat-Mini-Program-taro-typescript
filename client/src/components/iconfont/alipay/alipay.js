@@ -1,6 +1,6 @@
 Component({
   props: {
-    // heart-fill | customerservice-fill | play-circle | reloadtime | message | home | sound | eye-fill | eyeclose-fill | check | arrowleft | adduser | deleteuser | user | file-add | delete | right | arrowright | unorderedlist | orderedlist | file-add-fill | delete-fill | switchuser | appstoreadd | rotate-right
+    // frown | smile | star | heart-fill | customerservice-fill | play-circle | reloadtime | message | home | sound | eye-fill | eyeclose-fill | check | arrowleft | adduser | deleteuser | user | file-add | delete | right | arrowright | unorderedlist | orderedlist | file-add-fill | delete-fill | switchuser | appstoreadd | rotate-right
     name: null,
     // string | string[]
     color: '',

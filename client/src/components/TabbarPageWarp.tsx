@@ -9,7 +9,7 @@ import { CSSProperties, ReactNode } from "react";
  * @Author: John
  * @Date: 2021-06-24 15:54:05
  * @LastEditors: John
- * @LastEditTime: 2021-06-24 22:29:20
+ * @LastEditTime: 2021-06-25 18:21:19
  */
 export default function TabbarPageWarp(
   props: {
@@ -22,6 +22,8 @@ export default function TabbarPageWarp(
         {...props}
         style={{
           ...ThemeStyle.fullPageCommonStyle,
+          paddingLeft: 0,
+          paddingRight: 0,
           ...(props.style as CSSProperties),
         }}
       >

@@ -1,15 +1,15 @@
 /*
  * @Author: your name
  * @Date: 2021-06-10 12:42:21
- * @LastEditTime: 2021-06-25 15:01:57
+ * @LastEditTime: 2021-06-25 18:30:41
  * @LastEditors: John
  * @Description: In User Settings Edit
  * @FilePath: /taro-typescript/client/src/custom-tab-bar/index.tsx
  */
 import IconFont from "@/components/iconfont";
 import { View } from "@fower/taro";
-import Taro, { switchTab, nextTick } from "@tarojs/taro";
-import { useEffect, useLayoutEffect, useMemo } from "react";
+import Taro, { switchTab } from "@tarojs/taro";
+import { useEffect, useMemo } from "react";
 import { PageList, PageListName } from "../app.config";
 import { getNavUrl, toRpx } from "../utils/index";
 import { Theme } from "../constants/theme";
@@ -21,23 +21,16 @@ export default function Tabbar() {
     () => currentPages[currentPages.length - 1]?.route,
     [currentPages]
   );
+  const mode = useMemo<"light" | "dark">(() => {
+    if (currentPagePath == PageListName.Mine) {
+      return "dark";
+    }
+    return "light";
+  }, [currentPages]);
   useEffect(() => {
     // updateTabar();
-    console.log("初始化tab");
+    console.log("初始化tab", currentPages);
     return () => {};
-  }, []);
-
-  useLayoutEffect(() => {
-    nextTick(() => {
-      // PageList.forEach((_v, i) => {
-      //   createSelectorQuery()
-      //     .select("#tabItem_" + i)
-      //     .boundingClientRect()
-      //     .exec((res) => {
-      //       console.log("#tabItem_" + i, res);
-      //     });
-      // });
-    });
   }, []);
 
   return (
@@ -50,9 +43,14 @@ export default function Tabbar() {
         alignItems: "center",
         justifyContent: "space-between",
         paddingBottom: "env(safe-area-inset-bottom)",
-        backgroundColor: "white",
+        backgroundColor:
+          mode == "light" ? "#fff" : "#03174D",
         position: "relative",
-        boxShadow: "2px -5px 17px rgba(84, 87, 92, 0.1)",
+        boxShadow:
+          "2px -5px 17px " +
+          (mode == "light"
+            ? "rgba(84, 87, 92, 0.1)"
+            : "rgba(3, 19, 64, 0.95)"),
         height: toRpx(98),
       }}
     >
@@ -84,9 +82,6 @@ export default function Tabbar() {
             });
           }}
           id={"tabItem_" + i}
-          ref={(ref) => {
-            // console.log(ref);
-          }}
         >
           <View
             style={{
@@ -96,7 +91,9 @@ export default function Tabbar() {
               backgroundColor:
                 currentPagePath == v.pagePath
                   ? Theme.baseColor
-                  : "#fff",
+                  : mode == "light"
+                  ? "#fff"
+                  : "#03174D",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -118,8 +115,12 @@ export default function Tabbar() {
             textAlign="center"
             color={
               currentPagePath == v.pagePath
-                ? Theme.baseColor
-                : "#A0A3B1"
+                ? mode == "light"
+                  ? Theme.baseColor
+                  : "#E6E7F2"
+                : mode == "light"
+                ? "#A0A3B1"
+                : "#98A1BD"
             }
             style={{
               fontSize: toRpx(14),
@@ -136,93 +137,3 @@ export default function Tabbar() {
     </View>
   );
 }
-// export default class Tabbar extends React.Component {
-//   componentDidMount() {
-//     const query = createSelectorQuery();
-//     nextTick(() => {
-//       PageList.forEach((_v, i) => {
-//         query
-//           .in(getCurrentInstance().page as any)
-//           .select("#tabItem_" + i)
-//           .fields({ rect: true })
-//           .exec((res) => {
-//             console.log("#tabItem_" + i, res);
-//           });
-//       });
-//     });
-//   }
-//   render() {
-//     return (
-//       <View
-//         pb2
-//         pt2
-//         style={{
-//           display: "flex",
-//           flexDirection: "row",
-//           alignItems: "center",
-//           justifyContent: "space-between",
-//           paddingBottom: "env(safe-area-inset-bottom)",
-//           backgroundColor: "white",
-//           position: "relative",
-//         }}
-//       >
-//         <View
-//           style={{
-//             width: toRpx(46),
-//             height: toRpx(46),
-//             borderRadius: toRpx(18),
-//             backgroundColor: Theme.baseColor,
-//             display: "flex",
-//             alignItems: "center",
-//             justifyContent: "center",
-//             position: "absolute",
-//           }}
-//         ></View>
-//         {PageList.map((v, i) => (
-//           <View
-//             key={i}
-//             style={{
-//               flex: 1,
-//               display: "flex",
-//               flexDirection: "column",
-//               alignItems: "center",
-//               justifyContent: "center",
-//             }}
-//             onClick={() => {
-//               switchTab({
-//                 url: getNavUrl(v.pagePath as PageListName),
-//               });
-//             }}
-//             id={"tabItem_" + i}
-//           >
-//             <IconFont
-//               name={v.iconName!}
-//               size={44}
-//               // color={
-//               //   currentPage == v.pagePath
-//               //     ? "#fff"
-//               //     : "#A0A3B1"
-//               // }
-//             />
-//             <View
-//               textAlign="center"
-//               // color={
-//               //   currentPage == v.pagePath
-//               //     ? Theme.baseColor
-//               //     : "#A0A3B1"
-//               // }
-//               style={{
-//                 fontSize: toRpx(14),
-//                 lineHeight: "108.1%",
-//                 marginBottom: toRpx(5),
-//                 marginTop: toRpx(5),
-//               }}
-//             >
-//               {v.text}
-//             </View>
-//           </View>
-//         ))}
-//       </View>
-//     );
-//   }
-// }

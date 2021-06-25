@@ -4,6 +4,9 @@
 import React, { FunctionComponent } from 'react';
 import { ViewProps } from 'react-native';
 import { GProps } from 'react-native-svg';
+import IconFrown from './IconFrown';
+import IconSmile from './IconSmile';
+import IconStar from './IconStar';
 import IconHeartFill from './IconHeartFill';
 import IconCustomerserviceFill from './IconCustomerserviceFill';
 import IconPlayCircle from './IconPlayCircle';
@@ -30,7 +33,7 @@ import IconSwitchuser from './IconSwitchuser';
 import IconAppstoreadd from './IconAppstoreadd';
 import IconRotateRight from './IconRotateRight';
 
-export type IconNames = 'heart-fill' | 'customerservice-fill' | 'play-circle' | 'reloadtime' | 'message' | 'home' | 'sound' | 'eye-fill' | 'eyeclose-fill' | 'check' | 'arrowleft' | 'adduser' | 'deleteuser' | 'user' | 'file-add' | 'delete' | 'right' | 'arrowright' | 'unorderedlist' | 'orderedlist' | 'file-add-fill' | 'delete-fill' | 'switchuser' | 'appstoreadd' | 'rotate-right';
+export type IconNames = 'frown' | 'smile' | 'star' | 'heart-fill' | 'customerservice-fill' | 'play-circle' | 'reloadtime' | 'message' | 'home' | 'sound' | 'eye-fill' | 'eyeclose-fill' | 'check' | 'arrowleft' | 'adduser' | 'deleteuser' | 'user' | 'file-add' | 'delete' | 'right' | 'arrowright' | 'unorderedlist' | 'orderedlist' | 'file-add-fill' | 'delete-fill' | 'switchuser' | 'appstoreadd' | 'rotate-right';
 
 interface Props extends GProps, ViewProps {
   name: IconNames;
@@ -40,6 +43,12 @@ interface Props extends GProps, ViewProps {
 
 const IconFont: FunctionComponent<Props> = ({ name, ...rest }) => {
   switch (name) {
+    case 'frown':
+      return <IconFrown {...rest} />;
+    case 'smile':
+      return <IconSmile {...rest} />;
+    case 'star':
+      return <IconStar {...rest} />;
     case 'heart-fill':
       return <IconHeartFill {...rest} />;
     case 'customerservice-fill':
